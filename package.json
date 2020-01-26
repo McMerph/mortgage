@@ -4,9 +4,56 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "gatsby develop -H 0.0.0.0 -p 8000 -o",
+    "build": "gatsby build",
+    "serve": "gatsby serve -H 0.0.0.0 -p 8000",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,json,md}\"",
+    "lint:js": "eslint . --ext .js --ext .jsx",
+    "lint:css": "stylelint \"./src/**/*.js\" \"./src/**/*.jsx\"",
+    "lint:fix": "eslint . --fix --ext .js --ext .jsx",
+    "format-lint-test": "npm run format && npm run lint:js && npm run lint:css && npm test",
+    "test": "jest",
+    "ci": "npm run format:check && npm run lint:js && npm run lint:css && npm test",
+    "heroku-postbuild": "npm run build && npm run ci"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@material-ui/core": "^4.9.0",
+    "@material-ui/icons": "^4.5.1",
+    "@material-ui/styles": "^4.9.0",
+    "babel-plugin-styled-components": "^1.10.7",
+    "browser-update": "^3.3.9",
+    "gatsby": "^2.19.5",
+    "gatsby-plugin-manifest": "^2.2.38",
+    "gatsby-plugin-material-ui": "^2.1.6",
+    "gatsby-plugin-react-helmet": "^3.1.21",
+    "gatsby-plugin-styled-components": "^3.1.18",
+    "luxon": "^1.21.3",
+    "normalize.css": "^8.0.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1",
+    "react-number-format": "^4.3.1",
+    "styled-components": "^5.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "jest": "^25.1.0",
+    "prettier": "^1.19.1",
+    "stylelint": "^13.0.0",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.9.0"
+  }
 }
